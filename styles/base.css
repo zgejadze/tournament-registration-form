@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  width: 120rem;
+  /* width: 120rem; */
   height: 67.5rem;
   margin: 0;
 }
@@ -29,11 +29,13 @@ main {
   flex: 1 1;
 }
 
+/* splists page in 2 equal parts */
 .sides{
     flex-grow: 1;
     flex-basis: 0;
 }
 
+/* styling for first half */
 #theme-side {
   background-image: url("/images/intro-image.jpg");
   background-repeat: no-repeat;
@@ -61,6 +63,8 @@ main {
 .header-logo img {
   height: 1.15rem;
 }
+
+/* styling for main side  */
 
 #main-side {
   font-family: "Open Sans", sans-serif;

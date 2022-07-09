@@ -1,0 +1,14 @@
+/* update sections with new styles */
+
+#theme-side {
+    background-image: url("/images/yellow.jpg");
+}  
+
+#main-side{
+    background-color: white;
+}
+
+
+#tab-indicator{
+    display: flex;
+}

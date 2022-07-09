@@ -17,6 +17,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/styles//personal-info.css" />
   </head>
   <body>
     <main>
@@ -30,18 +31,37 @@
         </div>
       </section>
       <section class="sides" id="main-side">
-        <div>
-          <h2>
-            Chess says <span>a lot about</span> <br />
-            who we are
-          </h2>
+        <article>
+          <h3>Start creating your account</h3>
+          <hr />
+        </article>
+        <article>
+          <div id="tab-indicator">
+            <ol >
+              <li>
+                <p>1</p>
+                <p>Personal information</p>
+              </li>
+              <hr>
+              <li>
+                <p>2</p>
+                <p>Chess experience</p>
+              </li>
+            </ol>
+          </div>
+        </article>
+        <article>
+            <h4>Personal information</h4>
+            <p>This is basic informaton fields</p>
+            <form id="personal-information" action="" method="">
+                <input class="input-field" type="text" id="name" minlength="2" required>
+                <input class="input-field" type="email" value="Email address *" required>
+                <input class="input-field" type="number" value="Phone number *" required>
+                <input class="input-field" type="date" value="Date of birth *" required>
+                <button>next</button>
+            </form>
 
-          <a href="/personal-information.html">
-              <button class="btn">
-                <img src="/images/icons/Property 1=Default.png" alt="get started">
-              </button>
-        </a>
-      </div>
+        </article>
       </section>
     </main>
   </body>
