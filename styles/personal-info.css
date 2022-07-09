@@ -11,11 +11,11 @@
 }
 
 /* styling quote */
-#quote{
-    position: absolute;
-    top: 15rem;
-    left: 9rem;
-    width: 27rem;
+#quote {
+  position: absolute;
+  top: 15rem;
+  left: 9rem;
+  width: 27rem;
 }
 
 #quote h2 {
@@ -28,15 +28,15 @@
 }
 
 #quote p {
-font-style: italic;
-font-weight: 500;
-font-size: 24px;
-line-height: 33px;
-/* identical to box height */
+  font-style: italic;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 33px;
+  /* identical to box height */
 
-text-transform: uppercase;
+  text-transform: uppercase;
 
-color: #ffffff;
+  color: #ffffff;
 }
 
 /* styling tab title*/
@@ -76,12 +76,35 @@ color: #ffffff;
   width: 40px;
   height: 40px;
 
+  font-weight: 700;
+  font-size: 18px;
+
   background: #ffffff;
   border: 1px solid #e5e6e8;
   border-radius: 8px;
   text-align: center;
   padding: 7px;
   margin: 1rem auto;
+}
+/* this classes will be changed with js */
+.tab-index .active {
+  background: #e9faf1;
+  border: #e9faf1;
+}
+
+.tab-index .inactive {
+  background: #f5f5f5;
+  border-color: #e5e6e8;
+  color: rgba(149, 147, 154, 1);
+}
+
+.tab-index .success {
+  background-color: #e9faf1;
+  background-image: url(/images/icons/index-check.png);
+  background-size: 22.84px 12.21px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: #e9faf1;
 }
 
 .tab-index h5 {
@@ -118,6 +141,25 @@ color: #ffffff;
   font-size: 1rem;
   font-family: inherit;
   margin-bottom: 1.5rem;
+}
+
+.input-field:hover {
+  color: rgba(33, 37, 41, 0.5);
+  background-color: #f8f9fa;
+}
+.input-field:active {
+  background-color: #e9ecef;
+}
+
+/* will be changed later with js */
+.input-field-success {
+  
+}
+/* ///////////////////// */
+
+.input-field-error {
+  color: rgba(220, 53, 69, 1);
+  background-color: #ffefef;
 }
 
 #form-controll {
