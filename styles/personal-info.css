@@ -27,24 +27,21 @@
   align-items: center;
   list-style-type: none;
   padding: 0;
-  margin-top: 3rem;
+  margin-top: 4rem;
   width: 20rem;
 }
 
 #tabs-list hr {
-    flex-grow: 1;
-    margin: 0 -51px;
-    margin-bottom: 2.7rem
-    
+  flex-grow: 1;
+  margin: 0 -51px;
+  margin-bottom: 2.7rem;
 }
-
 
 #tabs-list li {
-    width: 9rem;
+  width: 9rem;
 }
 
-
-.tab-index  p {
+.tab-index p {
   box-sizing: border-box;
 
   width: 40px;
@@ -59,22 +56,44 @@
 }
 
 .tab-index h5 {
-    text-align: center;
+  text-align: center;
 }
 
 /* styling form titles */
-.form-title{
-    padding: 0;
-    margin-top: 6rem;
+.form-title {
+  padding: 0;
+  margin-top: 6rem;
 }
 
 .form-title h4 {
-    font-size: 2rem;   
-    margin-bottom: var(--space-1); 
+  font-size: 2rem;
+  margin-bottom: var(--space-1);
 }
 
 .form-title p {
-    color: rgba(149, 147, 154, 1);
-    margin: 0;
-    margin-bottom: 3rem;
+  color: rgba(149, 147, 154, 1);
+  margin: 0;
+  margin-bottom: 4rem;
+}
+
+/* styles for forms */
+
+.input-field {
+  display: block;
+  border: none;
+  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.13) inset;
+  border-radius: var(--border-radius-small);
+  height: 46px;
+  width: 90%;
+  padding: 8px 16px 8px 16px;
+  font-size: 1rem;
+  font-family: inherit;
+  margin-bottom: 1.5rem;
+}
+
+#form-controll {
+    margin-top: 5rem;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
 }

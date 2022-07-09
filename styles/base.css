@@ -13,6 +13,8 @@ html {
   --border-radius-medium: 12px;
   --border-radius-large: 15px;
 
+  --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.2);
+
   --shadow-medium: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -99,8 +101,23 @@ main {
   padding: var(--space-2) var(--space-6);
   background-color: rgba(33, 37, 41, 1);
   color: white;
+  text-align: center;
   border-radius: var(--border-radius-large);
   box-shadow: var(--shadow-medium);
+  font-size: 1.5rem;
+  border-color:rgba(33, 37, 41, 1);
+}
+
+.btn img{
+  height: 1.5rem;
+  margin: -3px
+}
+
+.btn-alt {
+  background-color: #F5F5F5;
+  border-color: rgba(33, 37, 41, 1);
+  color: rgba(33, 37, 41, 1);
+  ;
 }
 
 .btn:hover,
@@ -108,3 +125,11 @@ main {
   border: 3px solid rgb(154, 110, 236);
   padding: calc(var(--space-2) - 1px) calc(var(--space-6) - 1px);
 }
+
+.btn-alt:hover, .btn-alt:active {
+  border: 1px solid rgba(194, 165, 249, 0.8);
+  background-color: rgba(185, 180, 196);
+
+}
+
+
