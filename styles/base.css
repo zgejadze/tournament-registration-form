@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  --border-radius-small: 8px;
+  --border-radius-medium: 12px;
+  --border-radius-large: 15px;
+
+  --shadow-medium: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  width: 120rem;
+  height: 67.5rem;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex: 1 1;
+}
+
+.sides{
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+#theme-side {
+  background-image: url("/images/intro-image.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+}
+
+.header-logo {
+  background-color: rgba(112, 37, 251, 1);
+  margin: 0;
+  padding: 1.5rem 2.5rem;
+}
+
+.header-logo h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: white;
+  font-weight: bolder;
+  display: inline;
+}
+
+.header-logo img {
+  height: 1.15rem;
+}
+
+#main-side {
+  font-family: "Open Sans", sans-serif;
+  background-color: rgba(253, 83, 52, 1);
+}
+
+#main-side div {
+  width: 100%;
+  height: 100%;
+  padding: 10rem 0 0 5rem;
+}
+
+#main-side h2 {
+  font-family: "Nunito", sans-serif;
+  font-size: 5rem;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#main-side span {
+  font-size: 1.5rem;
+  color: rgb(29, 27, 27);
+  margin: auto 0;
+  vertical-align: middle;
+}
+
+.btn {
+  cursor: pointer;
+  font: inherit;
+  padding: var(--space-2) var(--space-6);
+  background-color: rgba(33, 37, 41, 1);
+  color: white;
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn:hover,
+.btn:active {
+  border: 3px solid rgb(154, 110, 236);
+  padding: calc(var(--space-2) - 1px) calc(var(--space-6) - 1px);
+}
