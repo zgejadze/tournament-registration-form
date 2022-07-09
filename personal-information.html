@@ -31,24 +31,22 @@
         </div>
       </section>
       <section class="sides" id="main-side">
-        <article>
+        <article id="title-container">
           <h3>Start creating your account</h3>
           <hr />
         </article>
         <article>
-          <div id="tab-indicator">
-            <ol >
+            <ol id="tabs-list">
               <li>
-                <p>1</p>
-                <p>Personal information</p>
+                <p class="tab-index">1</p>
+                <h5>Personal information</h5>
               </li>
               <hr>
               <li>
-                <p>2</p>
-                <p>Chess experience</p>
+                <p class="tab-index">2</p>
+                <h5>Chess experience</h5>
               </li>
             </ol>
-          </div>
         </article>
         <article>
             <h4>Personal information</h4>
@@ -56,11 +54,11 @@
             <form id="personal-information" action="" method="">
                 <input class="input-field" type="text" id="name" minlength="2" required>
                 <input class="input-field" type="email" value="Email address *" required>
-                <input class="input-field" type="number" value="Phone number *" required>
-                <input class="input-field" type="date" value="Date of birth *" required>
-                <button>next</button>
+                <input class="input-field" type="number"  required>
+                <input class="input-field" type="date"  required>
+                <button>Back</button>
+                <button>Next</button>
             </form>
-
         </article>
       </section>
     </main>

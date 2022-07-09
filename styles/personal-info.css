@@ -1,14 +1,63 @@
 /* update sections with new styles */
 
 #theme-side {
-    background-image: url("/images/yellow.jpg");
-}  
+  background-image: url("/images/yellow.jpg");
+}
 
-#main-side{
-    background-color: white;
+#main-side {
+  background-color: white;
+  font-size: 1rem;
+  padding-left: 3rem;
+}
+
+/* styling tab title*/
+
+#title-container hr {
+  margin: 0 -3rem;
+}
+
+#main-side h3 {
+  font-size: 1.2rem;
+  margin: 1.67rem;
+}
+/* styling tabs inditor */
+
+#tabs-list {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 5rem;
+  width: 20rem;
+}
+
+#tabs-list hr {
+    flex-grow: 1;
+    margin: 0 -51px;
+    margin-bottom: 2.7rem
+    
 }
 
 
-#tab-indicator{
-    display: flex;
+#tabs-list li {
+    width: 9rem;
+}
+
+
+#tabs-list .tab-index {
+  box-sizing: border-box;
+
+  width: 40px;
+  height: 40px;
+
+  background: #ffffff;
+  border: 1px solid #e5e6e8;
+  border-radius: 8px;
+  text-align: center;
+  padding: 7px;
+  margin: 1rem auto;
+}
+
+.tab-index h5 {
+    text-align: center;
 }
