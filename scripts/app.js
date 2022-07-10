@@ -4,6 +4,13 @@ const tabsIndexListElement = document.getElementById("tabs-list");
 const inputFieldsElements = document.querySelectorAll(
   "#personal-information input"
 );
+let formsData; // will be updated later
+const storedData = JSON.parse(localStorage.getItem('formsData'))
+
+
+const personalInformationFormElement = document.getElementById(
+    "personal-information"
+  );
 
 function addIndicatorActiveClass() {
   tabsIndexListElement.firstElementChild.firstElementChild.classList.add(
@@ -15,7 +22,27 @@ for (const input of inputFieldsElements) {
   input.addEventListener("change", addIndicatorActiveClass);
 }
 
+
+
+
+/// check if data exists already and prefill data
+const nameInputElement = document.getElementById("name");
+const emailInputElement = document.getElementById("email");
+const phoneInputElement = document.getElementById("phone");
+const dateInputElement = document.getElementById("date_of_birth");
+
+if(localStorage.getItem('formsData')){
+    nameInputElement.value = storedData.name
+    emailInputElement.value = storedData.email
+    phoneInputElement.value = storedData.phone
+    dateInputElement.value = storedData['date_of_birth']
+}
+
+
+
 ////////////////////////  validation for input fields ///////////////////////////
+
+
 
 // //// error popup ////////
 const errorPopupElement = document.getElementById("error-popup");
@@ -52,10 +79,13 @@ function preventDefault(event) {
 
 formElement.addEventListener("submit", preventDefault);
 
+//create entered user data object
+
+let userData = {};
+
 /////////////////////////
 // validate name field //
 /////////////////////////
-const nameInputElement = document.getElementById("name");
 
 let nameIsValid;
 
@@ -77,7 +107,6 @@ function validateName(event) {
       "input-field-success"
     );
     nameInputElement.removeEventListener("focusout", togglePopup);
-
     nameIsValid = true;
   }
 }
@@ -88,7 +117,6 @@ nameInputElement.addEventListener("input", validateName);
 // validate email field //
 //////////////////////////
 
-const emailInputElement = document.getElementById("email");
 
 let emailIsValid;
 
@@ -119,8 +147,8 @@ emailInputElement.addEventListener("input", validateEmail);
 // validate phone field //
 //////////////////////////
 
-const phoneInputElement = document.getElementById("phone");
 
+let phoneIsValid;
 function validatePhone(event) {
   const enteredNumber = event.target.value;
 
@@ -128,6 +156,7 @@ function validatePhone(event) {
     phoneInputElement.classList.remove("input-field-success");
     phoneInputElement.classList.add("input-field-error");
 
+    phoneIsValid = false;
     phoneInputElement.addEventListener("focusout", togglePopup);
     setPopupText("Invalid phone Number", "name must be 9 digits long");
   } else if (enteredNumber.toString().length > 8) {
@@ -137,6 +166,7 @@ function validatePhone(event) {
       "input-field-success"
     );
 
+    phoneIsValid = true;
     phoneInputElement.removeEventListener("focusout", togglePopup);
   }
 }
@@ -147,9 +177,10 @@ phoneInputElement.addEventListener("input", validatePhone);
 // validate date field  //
 //////////////////////////
 
-const dateInputElement = document.getElementById("date_of_birth");
 
 dateInputElement.max = new Date().toLocaleDateString("en-ca");
+
+let dateIsValid;
 
 function validateDate(event) {
   const enteredDate = event.target.value;
@@ -158,33 +189,95 @@ function validateDate(event) {
 
     dateInputElement.addEventListener("focusout", togglePopup);
     setPopupText("Invalid date", "Please select proper date");
+    dateIsValid = false;
   } else if (!event.target.validity.valid) {
     dateInputElement.classList.add("input-field-error");
+    dateIsValid = false;
   } else {
-    dateInputElement.classList.replace(
-      "input-field-error",
-      "input-field-success"
-    );
+    dateInputElement.classList.remove("input-field-error");
+    dateInputElement.classList.add("input-field-success");
 
     dateInputElement.removeEventListener("focusout", togglePopup);
+    dateIsValid = true;
   }
 }
 dateInputElement.addEventListener("focusout", validateDate);
 
-///////////////////////////////////////////////////////////////
 /////////// storing entered input in localstorage  ////////////
-///////////////////////////////////////////////////////////////
+// validates every input
+function validateForm() {
+  if (nameIsValid && emailIsValid && phoneIsValid && dateIsValid) {
+    const firstTabIndexElement = document.getElementById("first-tab");
+    firstTabIndexElement.classList.replace('active', 'success')
 
+    formsData = {
+        'name': nameInputElement.value,
+        'email': emailInputElement.value,
+        'phone': phoneInputElement.value,
+        'date_of_birth': dateInputElement.value
+    }
+     
+    localStorage.setItem('formsData', JSON.stringify(formsData))
+    
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+
+
+/////// next button /////////
 const nextPageButtonElement =
   document.getElementById("form-controll").children[1];
+const backPageButtonElement = nextPageButtonElement.previousElementSibling;
 
-function goToSecondPage() {
-  //  1. update second tab indexe
-  //  2. update theme image
-  //  3. update quote
-  //  4. update form title
-  //  5. remove old inputs and initiate new inputs
-  //  6. change btn to done
+function goToSecondPage(event) {
+  if (validateForm() || localStorage.getItem('formsData')) {
+    //  1. update tab indexes
+    const secondTabIndexElement = document.getElementById("second-tab");
+    const firstTabIndexElement = document.getElementById("first-tab");
+    firstTabIndexElement.textContent = ''
+    
+    secondTabIndexElement.classList.remove("inactive");
+    //  2. update theme image
+    const themeSideElement = document.getElementById("theme-side");
+    themeSideElement.style.backgroundImage = "url('/images/pink.jpg')";
+    //  3. update quote
+    const quoteElement = document.getElementById("quote").firstElementChild;
+    const qupteAuthorElement = quoteElement.nextElementSibling;
+
+    quoteElement.textContent =
+      "“Many have become chess masters; no one has become the master of chess.”";
+    qupteAuthorElement.textContent = "- Siegbert Tarrasch";
+    //  4. update form title
+    const formTileElement = document.querySelector(".form-title h4");
+    formTileElement.textContent = "Chess experience";
+
+    //  5. remove old inputs and initiate new inputs
+    personalInformationFormElement.innerHTML = "";
+
+    //  6. change buttons
+
+    event.target.textContent = "Done";
+    backPageButtonElement.href = "/personal-information.html";
+
+
+    // 7 add new forms elements
+    const selectExperienceDropdownElement = document.createElement('select')
+
+    const levels = ['begginer', "intermediate", 'professional']
+    let selectOptionElement
+    for(const level of levels){
+        selectOptionElement = document.createElement('option')
+        selectOptionElement.textContent = level
+        selectOptionElement.classList.add('experience-items')
+        selectExperienceDropdownElement.appendChild(selectOptionElement)
+    }
+
+    formElement.appendChild(selectExperienceDropdownElement)
+  }
 }
 
 nextPageButtonElement.addEventListener("click", goToSecondPage);
