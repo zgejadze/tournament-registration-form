@@ -58,28 +58,43 @@
             <h4>Personal information</h4>
             <p>This is basic informaton fields</p>
           </div>
-          <form id="personal-information">
+          <form id="personal-information" autocomplete="off">
             <input
               class="input-field"
               type="text"
               id="name"
-              value="name *"
+              placeholder="name *"
               minlength="2"
               required
             />
             <input
               class="input-field"
               type="email"
-              value="Email address *"
+              id="email"
+              name="email"
+              placeholder="Email address *"
               required
             />
             <input
               class="input-field"
               placeholder="Phone number"
+              id="phone"
+              name="phone"
               type="number"
+              min="100000000"
+              max="999999999"
               required
             />
-            <input class="input-field" type="date" required />
+            <input
+              class="input-field"
+              id="date_of_birth"
+              name="date_of_birth"
+              placeholder="Date of birth *"
+              type="text"
+              onfocus="(this.type='date')"
+              min="1900-01-01"
+              required
+            />
             <div id="form-controll">
               <!-- temporar link to main will be changed later -->
               <a href="/index.html">

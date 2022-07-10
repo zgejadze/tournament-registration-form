@@ -152,9 +152,14 @@
 }
 
 /* will be changed later with js */
-/* .input-field-success {
-  
-} */
+.input-field-success {
+  background-image: url("/images/icons/check.png");
+  background-repeat: no-repeat;
+  background-position:  right;
+  background-size: 20px;
+  background-origin: content-box;
+
+}
 /* ///////////////////// */
 
 .input-field-error {
