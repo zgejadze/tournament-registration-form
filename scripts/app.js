@@ -5,21 +5,6 @@ const inputFieldsElements = document.querySelectorAll(
   "#personal-information input"
 );
 let formsData; // will be updated later
-const storedData = JSON.parse(localStorage.getItem("formsData"));
-let response;
-async function createChessMasters() {
-   response = await fetch(
-    "https://chess-tournament-api.devtest.ge/api/grandmasters",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  ).then()
-}
-const chessMasters = createChessMasters();
-console.log(chessMasters);
 
 const personalInformationFormElement = document.getElementById(
   "personal-information"
