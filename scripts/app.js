@@ -5,10 +5,12 @@ const inputFieldsElements = document.querySelectorAll(
   "#personal-information input"
 );
 let formsData; // will be updated later
+const storedData = JSON.parse(localStorage.getItem('formsData'))
+
 
 const personalInformationFormElement = document.getElementById(
-  "personal-information"
-);
+    "personal-information"
+  );
 
 function addIndicatorActiveClass() {
   tabsIndexListElement.firstElementChild.firstElementChild.classList.add(
@@ -20,20 +22,27 @@ for (const input of inputFieldsElements) {
   input.addEventListener("change", addIndicatorActiveClass);
 }
 
+
+
+
 /// check if data exists already and prefill data
 const nameInputElement = document.getElementById("name");
 const emailInputElement = document.getElementById("email");
 const phoneInputElement = document.getElementById("phone");
 const dateInputElement = document.getElementById("date_of_birth");
 
-if (localStorage.getItem("formsData")) {
-  nameInputElement.value = storedData.name;
-  emailInputElement.value = storedData.email;
-  phoneInputElement.value = storedData.phone;
-  dateInputElement.value = storedData["date_of_birth"];
+if(localStorage.getItem('formsData')){
+    nameInputElement.value = storedData.name
+    emailInputElement.value = storedData.email
+    phoneInputElement.value = storedData.phone
+    dateInputElement.value = storedData['date_of_birth']
 }
 
+
+
 ////////////////////////  validation for input fields ///////////////////////////
+
+
 
 // //// error popup ////////
 const errorPopupElement = document.getElementById("error-popup");
@@ -108,6 +117,7 @@ nameInputElement.addEventListener("input", validateName);
 // validate email field //
 //////////////////////////
 
+
 let emailIsValid;
 
 function validateEmail(event) {
@@ -137,6 +147,7 @@ emailInputElement.addEventListener("input", validateEmail);
 // validate phone field //
 //////////////////////////
 
+
 let phoneIsValid;
 function validatePhone(event) {
   const enteredNumber = event.target.value;
@@ -165,6 +176,7 @@ phoneInputElement.addEventListener("input", validatePhone);
 //////////////////////////
 // validate date field  //
 //////////////////////////
+
 
 dateInputElement.max = new Date().toLocaleDateString("en-ca");
 
@@ -196,22 +208,25 @@ dateInputElement.addEventListener("focusout", validateDate);
 function validateForm() {
   if (nameIsValid && emailIsValid && phoneIsValid && dateIsValid) {
     const firstTabIndexElement = document.getElementById("first-tab");
-    firstTabIndexElement.classList.replace("active", "success");
+    firstTabIndexElement.classList.replace('active', 'success')
 
     formsData = {
-      name: nameInputElement.value,
-      email: emailInputElement.value,
-      phone: phoneInputElement.value,
-      date_of_birth: dateInputElement.value,
-    };
-
-    localStorage.setItem("formsData", JSON.stringify(formsData));
-
+        'name': nameInputElement.value,
+        'email': emailInputElement.value,
+        'phone': phoneInputElement.value,
+        'date_of_birth': dateInputElement.value
+    }
+     
+    localStorage.setItem('formsData', JSON.stringify(formsData))
+    
     return true;
   } else {
     return false;
   }
 }
+
+
+
 
 /////// next button /////////
 const nextPageButtonElement =
@@ -219,12 +234,12 @@ const nextPageButtonElement =
 const backPageButtonElement = nextPageButtonElement.previousElementSibling;
 
 function goToSecondPage(event) {
-  if (validateForm() || localStorage.getItem("formsData")) {
+  if (validateForm() || localStorage.getItem('formsData')) {
     //  1. update tab indexes
     const secondTabIndexElement = document.getElementById("second-tab");
     const firstTabIndexElement = document.getElementById("first-tab");
-    firstTabIndexElement.textContent = "";
-
+    firstTabIndexElement.textContent = ''
+    
     secondTabIndexElement.classList.remove("inactive");
     //  2. update theme image
     const themeSideElement = document.getElementById("theme-side");
@@ -248,20 +263,21 @@ function goToSecondPage(event) {
     event.target.textContent = "Done";
     backPageButtonElement.href = "/personal-information.html";
 
-    // 7 add new forms elements
-    const selectExperienceDropdownElement = document.createElement("select");
-    selectExperienceDropdownElement.classList.add("experience-selector");
 
-    const levels = ["begginer", "intermediate", "professional"];
-    let selectOptionElement;
-    for (const level of levels) {
-      selectOptionElement = document.createElement("option");
-      selectOptionElement.textContent = level;
-      selectOptionElement.classList.add("experience-itemss");
-      selectExperienceDropdownElement.appendChild(selectOptionElement);
+    // 7 add new forms elements
+    const selectExperienceDropdownElement = document.createElement('select')
+    selectExperienceDropdownElement.classList.add('experience-selector')
+    
+    const levels = ['begginer', "intermediate", 'professional']
+    let selectOptionElement
+    for(const level of levels){
+        selectOptionElement = document.createElement('option')
+        selectOptionElement.textContent = level
+        selectOptionElement.classList.add('experience-itemss')
+        selectExperienceDropdownElement.appendChild(selectOptionElement)
     }
 
-    formElement.appendChild(selectExperienceDropdownElement);
+    formElement.appendChild(selectExperienceDropdownElement)
   }
 }
 
