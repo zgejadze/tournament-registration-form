@@ -151,16 +151,73 @@
   background-color: #e9ecef;
 }
 
-/* will be changed later with js */
 .input-field-success {
   background-image: url("/images/icons/check.png");
   background-repeat: no-repeat;
-  background-position:  right;
+  background-position: right;
   background-size: 20px;
   background-origin: content-box;
-
 }
-/* ///////////////////// */
+
+/* erro popup styling */
+#error-popup {
+  width: 350px;
+  height: 87px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: var(--shadow-medium);
+  border-radius: var(--border-radius-medium);
+  border: 1px solid rgb(180, 151, 151);
+  padding: 5px;
+  position: absolute;
+  top: 20rem;
+  right: 8rem;
+  display: none;
+}
+
+#error-popup div {
+  display: flex;
+  justify-content: center;
+}
+
+#error-message {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+#error-popup div p {
+  color: rgba(220, 53, 69, 1);
+  margin-left: 0.5rem;
+  font-weight: 600;
+  font-size: 14px;
+  align-self: center;
+}
+#error-popup span {
+  margin-left: auto;
+  margin-right: 0.5rem;
+}
+
+#close-popup:hover {
+  cursor: pointer;
+}
+
+#error-popup hr {
+  margin: 0;
+  margin: 0 -5px;
+}
+
+#error-popup img {
+  width: 20px;
+  height: 20px;
+  margin: auto 0;
+}
+
+#error-popup p {
+  margin: 6px;
+  text-align: left;
+}
+
+/* ///////////////////////// */
 
 .input-field-error {
   color: rgba(220, 53, 69, 1);
